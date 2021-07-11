@@ -31,7 +31,7 @@ def dht_rest(gpio_pin, interval, name, url):
 		GPIO.cleanup()
 
 def main():
-	dht_rest(14, 60*5, 'raspi01', 'http://172.10.200.9/post')
+	dht_rest(14, 60*5, 'raspi01', 'http://172.10.200.9/tmp')
 
 if __name__ == '__main__': main()
 
