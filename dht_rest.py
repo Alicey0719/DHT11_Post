@@ -13,8 +13,8 @@ def dht_rest(gpio_pin, interval, name, url):
 	# pin assign
 	instance1 = dht11.DHT11(pin=gpio_pin)
 
-	try:
-		while True:
+	while True:
+		try:
 			result1 = instance1.read()
 			
 			if result1.is_valid():
@@ -27,9 +27,9 @@ def dht_rest(gpio_pin, interval, name, url):
 				print("res1","Humidity: %-3.1f %%" % result1.humidity)
 			time.sleep(interval)
 
-	except KeyboardInterrupt:
-		print("Cleanup")
-		GPIO.cleanup()
+		except KeyboardInterrupt:
+			print("Cleanup")
+			GPIO.cleanup()
 
 def main():
 	dht_rest(14, 1*5, 'raspi01', 'http://172.10.200.9:8082/tmp')
