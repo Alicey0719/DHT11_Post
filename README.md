@@ -1,3 +1,12 @@
+# DHT11 Pythonをベースにした温湿度送信ツール
+ DHT11 Pythonをベースにした温湿度送信ツールです。  
+ 宛先URLにPOSTさせます。      
+  
+<br><br><br><br>
+* * *
+* * *
+* * *
+* * *
 # DHT11 Python library
 
 This simple class can be used for reading temperature and humidity values from DHT11 sensor on Raspberry Pi.
@@ -42,3 +51,4 @@ For working example, see `dht11_example.py` (you probably need to adjust pin for
 # License
 
 This project is licensed under the terms of the MIT license.
+* * *
