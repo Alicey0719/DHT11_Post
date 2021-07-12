@@ -34,8 +34,7 @@ def dht_rest(gpio_pin, interval, name, url):
 			GPIO.cleanup()
 
 def main():
-	#dht_rest(14, 1*5, 'raspi01', 'http://172.10.200.9:8082/temp')
-	dht_rest(14, 60*5, 'raspi01', 'https://dist2021-temp-sys.herokuapp.com/temp')
+	dht_rest(14, 1*5, 'raspi01', 'http://172.10.200.9:8082/temp')
 
 if __name__ == '__main__': main()
 
