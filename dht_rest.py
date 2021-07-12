@@ -19,7 +19,7 @@ def dht_rest(gpio_pin, interval, name, url):
 			
 			if result1.is_valid():
 				headers = {'Accept': 'application/json'}
-				data = {"tmp":"%-3.1f" % result1.temperature}
+				data = {"name":"%s" % name,"temp":"%-3.1f" % result1.temperature, "hum":"%-3.1f" % result1.humidity}
 				response = requests.post(url, headers=headers, data=data)
 				print(response)
 				print("Last valid input: " + str(datetime.datetime.now()))
