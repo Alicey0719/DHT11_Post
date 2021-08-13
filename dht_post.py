@@ -5,7 +5,7 @@ import datetime
 import requests
 
 
-def dht_rest(gpio_pin, interval, name, url):
+def dht_post(gpio_pin, interval, name, url):
 	# initialize GPIO
 	GPIO.setwarnings(True)
 	GPIO.setmode(GPIO.BCM)
@@ -34,7 +34,7 @@ def dht_rest(gpio_pin, interval, name, url):
 			GPIO.cleanup()
 
 def main():
-	dht_rest(14, 1*5, 'raspi01', 'http://172.10.200.9:8082/temp')
+	dht_post(14, 1*5, 'raspi01', 'http://127.0.0.1/temp')
 
 if __name__ == '__main__': main()
 
