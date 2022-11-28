@@ -25,7 +25,7 @@ sensor = dht11.DHT11(pin=PIN)
 def dht_post(gpio_pin, name, url):		
 	loop_count = 0
 
-	while true:
+	while True:
 		s_data = sensor.read()
 
 		if s_data.is_valid():
