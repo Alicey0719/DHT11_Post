@@ -30,8 +30,12 @@ def dht_post(gpio_pin, name, url):
 
 		if s_data.is_valid():
 			headers = {'Accept': 'application/json'}
-			data = {"name":"%s" % name,"temp":"%-3.1f" % s_data.temperature, "hum":"%-3.1f" % s_data.humidity}
-			response = requests.post(url, headers=headers, data=data)
+
+			try:
+				data = {"name":"%s" % name,"temp":"%-3.1f" % s_data.temperature, "hum":"%-3.1f" % s_data.humidity}
+				response = requests.post(url, headers=headers, data=data)
+			except:
+				pass
 			# print(response)
 			# print("Last valid input: " + str(datetime.datetime.now()))
 			# print("res1","Temperature: %-3.1f C" % s_data.temperature)
