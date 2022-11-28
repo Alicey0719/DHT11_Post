@@ -1,54 +1,39 @@
 # DHT11 Pythonをベースにした温湿度送信ツール
  DHT11 Pythonをベースにした温湿度送信ツールです。  
- 宛先URLにPOSTさせます。      
+ 宛先URLにPOSTさせます。  
+
+---
+
+## 環境変数について
+- PIN  
+センサーが接続されているGPIOピンの番号を指定します
+- POST_ADDR  
+送信先のURLを指定します。送信先へはPostメソッドでjson形式で送信されます。
+    ```json
+    
+    ```
+- INTERVAL  
+送信間隔を秒単位で指定します。
   
-<br><br><br><br>
-* * *
-* * *
-* * *
-* * *
-# DHT11 Python library
-
-This simple class can be used for reading temperature and humidity values from DHT11 sensor on Raspberry Pi.
-
-# Installation
-
-To install, just run following:
-
-```
-pip install dht11
+---
+## Setting(docker&plain)
+- app/.env
+```sh
+PIN=14 # your GPIO PIN
+POST_ADDR=http://127.0.0.1/temp # POST Server URL
+INTERVAL=300 # send interval(second)
 ```
 
-# Usage
-
-1. Instantiate the `DHT11` class with the pin number as constructor parameter.
-2. Call `read()` method, which will return `DHT11Result` object with actual values and error code.
-
-For example:
-
-```python
-import RPi.GPIO as GPIO
-import dht11
-
-# initialize GPIO
-GPIO.setwarnings(False)
-GPIO.setmode(GPIO.BCM)
-GPIO.cleanup()
-
-# read data using pin 14
-instance = dht11.DHT11(pin = 14)
-result = instance.read()
-
-if result.is_valid():
-    print("Temperature: %-3.1f C" % result.temperature)
-    print("Humidity: %-3.1f %%" % result.humidity)
-else:
-    print("Error: %d" % result.error_code)
+## Setting(Kubernetes)
+- manifests.yaml
+```yaml
+~~~
+env:
+    - name: PIN
+      value: "14" # your GPIO PIN
+    - name: POST_ADDR
+      value: "http://127.0.0.1/temp" # POST Server URL
+    - name: INTERVAL
+      value: "300" # send interval(second)
+~~~
 ```
-
-For working example, see `dht11_example.py` (you probably need to adjust pin for your configuration)
-
-# License
-
-This project is licensed under the terms of the MIT license.
-* * *

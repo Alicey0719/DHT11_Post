@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: dht11-post
+spec:
+  #replicas: 1
+  selector:
+    matchLabels:
+      app: dht11-post
+  template:
+    metadata:
+      labels:
+        app: dht11-post
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: sensortype
+                operator: In
+                values:
+                - dht11
+      containers:
+        - name: dht11-post
+          image: alicey/raspi-dht11-post:latest
+          securityContext:
+            privileged: true
+          env:
+            - name: PIN
+              value: "23"
+            - name: POST_ADDR
+              value: "http://127.0.0.1/temp"
+            - name: INTERVAL
+              value: "10"

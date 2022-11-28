@@ -1,0 +1,8 @@
+version: "3"
+
+services:
+  dht11-server:
+    build: .
+    container_name: dht11-post
+    volumes:
+        - "./app/:/opt/app"
