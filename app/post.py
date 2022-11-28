@@ -16,8 +16,8 @@ GPIO.setmode(GPIO.BCM)
 
 PIN = int(os.getenv('PIN'))
 POST_ADDR = str(os.getenv('POST_ADDR'))
-INTERVAL = str(os.getenv('INTERVAL'))
-HOST_NAME = socket.gethostname()
+INTERVAL = int(os.getenv('INTERVAL'))
+HOST_NAME = str(socket.gethostname())
 
 print("Using PIN is", PIN)
 sensor = dht11.DHT11(pin=PIN)
