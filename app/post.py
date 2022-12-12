@@ -3,6 +3,7 @@ import RPi.GPIO as GPIO
 import dht11
 import time
 import datetime
+import json
 import requests
 import socket
 import os
@@ -29,11 +30,9 @@ def dht_post(gpio_pin, name, url):
 		s_data = sensor.read()
 
 		if s_data.is_valid():
-			headers = {'Accept': 'application/json'}
-
 			try:
 				data = {"name":"%s" % name,"temp":"%-3.1f" % s_data.temperature, "hum":"%-3.1f" % s_data.humidity}
-				response = requests.post(url, headers=headers, data=data)
+				response = requests.post(url, data=json.dumps(data))
 			except:
 				pass
 			# print(response)
