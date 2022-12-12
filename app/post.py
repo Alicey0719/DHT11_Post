@@ -31,8 +31,9 @@ def dht_post(gpio_pin, name, url):
 
 		if s_data.is_valid():
 			try:
+				headers = { "Content-Type": "application/json" }
 				data = {"name":"%s" % name,"temp":"%-3.1f" % s_data.temperature, "hum":"%-3.1f" % s_data.humidity}
-				response = requests.post(url, data=json.dumps(data))
+				response = requests.post(url, data=json.dumps(data), headers=headers)
 			except:
 				pass
 			# print(response)
